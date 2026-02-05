@@ -1,0 +1,117 @@
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f3ebe5, #e6d3c1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Card */
+.home-card {
+  background: #fffaf6;
+  padding: 40px 44px;
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(92, 64, 51, 0.3);
+  text-align: center;
+  animation: pop 0.4s ease;
+  width: 360px;
+}
+
+/* Heading */
+.home-card h1 {
+  color: #5a3e2b;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+/* Subtitle */
+.home-card p {
+  color: #6f4e37;
+  margin-bottom: 26px;
+  font-size: 14px;
+}
+
+/* Button container */
+.home-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* Base button */
+.home-btn {
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 8px 18px rgba(139, 94, 52, 0.35);
+}
+
+/* Register button */
+.register-btn {
+  background: linear-gradient(135deg, #8b5e34, #6f4e37);
+  color: white;
+}
+
+.register-btn:hover {
+  background: #5a3e2b;
+  transform: translateY(-2px);
+}
+
+/* Login button */
+.login-btn {
+  background: #f7eee7;
+  color: #5a3e2b;
+  border: 1px solid #d6c6b8;
+}
+
+.login-btn:hover {
+  background: #efe3d8;
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .home-card {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .home-links {
+    flex-direction: column;
+  }
+}
+
+.home-layout {
+  display: flex;
+  gap: 40px;            /* 👈 THIS creates space */
+  align-items: center;
+}
+
+/* Optional: constrain outlet width */
+.home-outlet {
+  min-width: 380px;
+}
+
+/* Mobile fix */
+@media (max-width: 900px) {
+  .home-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

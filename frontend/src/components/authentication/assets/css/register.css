@@ -1,0 +1,127 @@
+/* Page wrapper */
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient(135deg, #f3ebe5, #e6d3c1); */
+  background: transparent;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Card */
+.register-box {
+  width: 380px;
+  background: #fffaf6;
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(92, 64, 51, 0.25);
+  animation: pop 0.35s ease;
+  position: relative;
+}
+
+/* Heading */
+.register-box h1 {
+  text-align: center;
+  margin-bottom: 22px;
+  color: #5a3e2b;
+  letter-spacing: 0.4px;
+}
+
+/* Form layout */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.register-form label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 14px;
+  color: #6f4e37;
+}
+
+/* Inputs */
+.register-form input {
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid #d6c6b8;
+  font-size: 14px;
+  outline: none;
+  transition: 0.25s;
+  box-sizing: border-box;   /* 👈 THIS FIXES OVERFLOW */
+  width: 100%;
+}
+
+
+.register-form input:focus {
+  border-color: #8b5e34;
+  box-shadow: 0 0 0 2px rgba(139, 94, 52, 0.2);
+}
+
+/* Password field */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 42px;
+}
+
+
+/* Eye icon */
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #8b5e34;
+  transition: 0.2s;
+}
+
+.eye-icon:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Error text */
+.error {
+  color: #b91c1c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Button */
+.register-form button {
+  margin-top: 24px;
+  padding: 12px;
+  background: linear-gradient(135deg, #8b5e34, #6f4e37);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(139, 94, 52, 0.4);
+  transition: 0.3s;
+}
+
+.register-form button:hover {
+  background: #5a3e2b;
+  transform: translateY(-1px);
+}
+
+/* Animation */
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

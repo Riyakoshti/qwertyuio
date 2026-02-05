@@ -1,0 +1,222 @@
+/*PAGE
+.details-container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  font-family:'Inter','Segoe UI',sans-serif;
+}
+
+CARD
+.details-card{
+  width:540px;
+  background:white;
+  padding:26px;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(92,64,51,0.3);
+  animation:popup .35s ease;
+  position:relative;
+
+/* HEADER 
+.details-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.details-header h2{
+  font-size:22px;
+  color:#5a3e2b;
+}
+
+/* CLOSE BUTTON 
+.close-btn{
+  background:#8b5e34;
+  border:none;
+  color:white;
+  font-size:18px;
+  padding:6px 12px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close-btn:hover{
+  background:#5a3e2b;
+  transform:scale(1.1);
+}
+
+/* GRID 
+.details-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+/* BOX 
+.details-grid p{
+  background:#f4e9dc;
+  padding:12px;
+  border-radius:10px;
+  font-size:14px;
+  color:#3f2d1f;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+/* LABEL 
+.details-grid span{
+  font-size:12px;
+  font-weight:600;
+  color:#8b5e34;
+  margin-bottom:3px;
+}
+
+/* LOADING 
+.loading{
+  text-align:center;
+  font-size:18px;
+  margin-top:50px;
+  color:#5a3e2b;
+}
+
+/* ANIMATION 
+@keyframes popup{
+  from{
+    transform:scale(.85);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* MOBILE 
+@media(max-width:600px){
+  .details-card{
+    width:90%;
+  }
+  .details-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* PAGE */
+.details-container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  font-family:'Poppins','Inter','Segoe UI',sans-serif;
+}
+
+/* CARD */
+.details-card{
+  width:560px;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 20px 45px rgba(92,64,51,0.28);
+  animation:popup .35s ease;
+  border-top:6px solid #8b5e34; /* hospital header feel */
+}
+
+/* HEADER */
+.details-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+}
+
+.details-header h2{
+  font-size:22px;
+  color:#5a3e2b;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+  background:#8b5e34;
+  border:none;
+  color:white;
+  font-size:18px;
+  padding:6px 12px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+  position: relative;
+}
+
+.close-btn:hover{
+  background:#5a3e2b;
+  transform:scale(1.1);
+}
+
+/* GRID */
+.details-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+/* BOX */
+.details-grid p{
+  background:#faf5ef;
+  padding:14px;
+  border-radius:12px;
+  font-size:14px;
+  color:#3f2d1f;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 6px 14px rgba(0,0,0,.08);
+  border-left:4px solid #8b5e34; /* hospital style */
+}
+
+/* LABEL */
+.details-grid span{
+  font-size:12px;
+  font-weight:700;
+  color:#8b5e34;
+  margin-bottom:4px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+/* LOADING */
+.loading{
+  text-align:center;
+  font-size:18px;
+  margin-top:50px;
+  color:#5a3e2b;
+  font-weight:600;
+}
+
+/* ANIMATION */
+@keyframes popup{
+  from{
+    transform:scale(.85);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .details-card{
+    width:92%;
+  }
+  .details-grid{
+    grid-template-columns:1fr;
+  }
+}
