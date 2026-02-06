@@ -5,6 +5,7 @@ from django.urls import path
 from patient.views import PatientAPI,genderAPI,diseaseAPI,patientdetailsAPI
 from auth.views import registerAPI,loginAPI,logoutAPI,profileAPI,EmailTokenAPI,VerifyEmailAPI,refreshtokenAPI
 from doctor.views import doctorAPI
+from appointments.views import appointmentAPI
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,5 +26,7 @@ urlpatterns = [
     path('refresh/',refreshtokenAPI.as_view()),
     path('patientdetails/',patientdetailsAPI.as_view()),
     path('doctor/',doctorAPI.as_view()),
+    path('appointment/', appointmentAPI.as_view()),
+    path('appointment/<int:appointment_id>/', appointmentAPI.as_view()),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

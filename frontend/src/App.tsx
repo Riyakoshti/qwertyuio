@@ -21,6 +21,11 @@ import EmailVerification from './components/authentication/EmailVerification';
 import Manage_disease from './components/manage_disease';
 import Create_doctor from './components/doctor/create'
 import Dashboard from './components/dashboard/dashboard';
+import List from './components/appointments/list'
+import Book_app from './components/appointments/book'
+import Reschedule from './components/appointments/reshedule';
+import Cancel from './components/appointments/cancel';
+import Change_status from './components/appointments/change_status';
 function App() {
   return (
     <div className="App">
@@ -45,9 +50,15 @@ function App() {
             </Route>
 
             <Route path='/create_doctor' element={<Create_doctor />}></Route>
+            <Route path='/dashboard' element={<Dashboard />}></Route>
+            <Route path="/appointments-list" element={<List />}></Route>
+            <Route path="/appointments-book" element={<Book_app />}></Route>
+            <Route path="/appointments-reschedule" element={<Reschedule />}></Route>
+            <Route path="/appointments-cancel" element={<Cancel />}></Route>
+            <Route path="/appointments-changestatus" element={<Change_status />}></Route>
           </Route>
 
-          <Route path='/dashboard' element={<Dashboard />}></Route>
+
         </Routes>
         <ToastContainer position="top-right" autoClose={3000} />
       </>
