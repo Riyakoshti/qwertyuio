@@ -1,0 +1,227 @@
+Nice, this one is **critical** and also where many systems get messy if not designed cleanly.
+We’ll do **Prescription Domain** the same way: **feature-first, role-agnostic**.
+
+Think:
+
+> “Everything the system can do with a prescription as a medical artifact.”
+
+---
+
+# 💊 PRESCRIPTION DOMAIN — COMPLETE FUNCTIONALITY
+
+---
+
+## 1️⃣ Prescription Entity (Core)
+
+### What a prescription IS
+
+A **clinical instruction document** issued during/after consultation.
+
+### Core attributes
+
+* Prescription ID
+* Patient ID
+* Doctor ID
+* Appointment ID
+* Issue date
+* Status (DRAFT / FINAL)
+* Notes / advice
+
+🧠
+Prescription is **linked to appointment**, not standalone.
+
+---
+
+## 2️⃣ Prescription Creation
+
+### What this feature is
+
+Issuing medical instructions.
+
+### Functionality
+
+* Create prescription
+* Attach to appointment
+* Add general instructions
+* Set follow-up date
+
+### Domain rules
+
+* Appointment must exist
+* Appointment must be valid
+* One appointment → one active prescription (usually)
+
+---
+
+## 3️⃣ Medicine Management (Inside Prescription)
+
+### What this feature is
+
+Structured medicine listing.
+
+### Functionality
+
+* Add medicine
+* Update medicine
+* Remove medicine (before finalization)
+
+### Medicine attributes
+
+* Medicine name
+* Dosage
+* Frequency
+* Duration
+* Instructions (after food, etc.)
+
+🧠
+Medicines are **child entities** of prescription.
+
+---
+
+## 4️⃣ Prescription Update & Finalization
+
+### What this feature is
+
+Lifecycle control.
+
+### Functionality
+
+* Update prescription (while DRAFT)
+* Finalize prescription
+* Lock after finalization
+* Track edit history
+
+### Rules
+
+* FINAL prescriptions are immutable
+* Edits require versioning (v2, v3…)
+
+---
+
+## 5️⃣ Prescription Viewing
+
+### What this feature is
+
+Accessing prescription data.
+
+### Functionality
+
+* View prescription details
+* View medicine list
+* View issue & follow-up info
+* View prescription history
+
+This is **read-heavy**.
+
+---
+
+## 6️⃣ Prescription Output (Representation)
+
+### What this feature is
+
+Making prescription usable.
+
+### Functionality
+
+* Generate printable format
+* Download as PDF
+* Share digitally (future)
+
+🧠
+Rendering ≠ business logic
+Keep it separate.
+
+---
+
+## 7️⃣ Prescription–Patient History Integration
+
+### What this feature is
+
+Making prescription part of medical timeline.
+
+### Functionality
+
+* Show prescriptions chronologically
+* Link to visit & doctor
+* Show follow-up status
+
+---
+
+## 8️⃣ Prescription Corrections & Versioning
+
+### What this feature is
+
+Handling mistakes safely.
+
+### Functionality
+
+* Create revised prescription
+* Mark previous as superseded
+* Maintain full audit trail
+
+⚠️
+Never hard-delete prescriptions.
+
+---
+
+## 9️⃣ Prescription Notifications (Conceptual)
+
+### What this feature is
+
+Events around prescription lifecycle.
+
+### Events
+
+* Prescription issued
+* Prescription updated
+* Follow-up due
+
+(Consumed by notification system later)
+
+---
+
+## ❌ EXPLICITLY NOT PRESCRIPTION DOMAIN
+
+Avoid scope mixing.
+
+* Medicine inventory
+* Pharmacy billing
+* Payment processing
+* Appointment creation
+* Medical record editing (separate domain)
+
+---
+
+## 🧠 Key Design Insights
+
+* Prescription = **legal medical document**
+* Must be **immutable after finalization**
+* Always auditable
+* Versioning > editing
+
+---
+
+## ✅ Domains completed so far
+
+✔ Doctor
+✔ Appointment
+✔ Patient
+✔ Staff
+✔ Prescription
+
+Remaining major ones:
+
+* **Medical Records**
+* **Admin / System**
+* **Permissions & Access mapping**
+
+---
+
+## 🔜 What next?
+
+1️⃣ **Medical Records domain**
+2️⃣ **Admin domain**
+3️⃣ **Permission matrix across all domains**
+4️⃣ **DB schema design**
+
+Tell me the next domain and we’ll keep going clean 👌

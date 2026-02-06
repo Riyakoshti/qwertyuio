@@ -1,0 +1,270 @@
+Perfect 👍
+Now we do **Appointment Domain** the *same clean way* — **feature-first, role-agnostic**.
+
+Think of it as:
+
+> “Everything the system can do with an appointment, no matter who triggers it.”
+
+---
+
+# 📅 APPOINTMENT DOMAIN — COMPLETE FUNCTIONALITY
+
+---
+
+## 1️⃣ Appointment Entity (Core)
+
+### What an appointment IS
+
+A **linking entity** between:
+
+* Patient
+* Doctor
+* Time slot
+* Status
+
+### Core attributes
+
+* Appointment ID
+* Patient ID
+* Doctor ID
+* Date
+* Time slot
+* Status
+* Reason / notes
+* Created by (system/user)
+* Source (online / staff / admin)
+
+This entity is the **heart of the system**.
+
+---
+
+## 2️⃣ Appointment Creation
+
+### What this feature is
+
+Booking a consultation.
+
+### Functionality
+
+* Create appointment
+* Validate doctor availability
+* Prevent slot conflicts
+* Attach reason / symptoms
+* Auto-assign initial status
+
+### Rules (domain-level)
+
+* Doctor must be active
+* Slot must be available
+* Appointment duration respected
+* One slot = one appointment
+
+🧠 **No role logic here** — just validation.
+
+---
+
+## 3️⃣ Appointment Viewing & Listing
+
+### What this feature is
+
+Fetching appointment data.
+
+### Functionality
+
+* List appointments
+* View appointment details
+* Filter by:
+
+  * Date
+  * Status
+  * Doctor
+  * Patient
+* Pagination
+* Sorting
+
+### Domain concern
+
+* Efficient querying
+* Indexing on date, doctor, patient
+
+---
+
+## 4️⃣ Appointment Status Management
+
+### What this feature is
+
+Tracking lifecycle of an appointment.
+
+### Common statuses
+
+```
+REQUESTED
+CONFIRMED
+RESCHEDULED
+CANCELLED
+COMPLETED
+NO_SHOW
+```
+
+### Functionality
+
+* Update status
+* Track status history
+* Timestamp each transition
+
+⚠️ Status rules:
+
+* COMPLETED → final
+* CANCELLED → no further updates
+* NO_SHOW → auto-close
+
+---
+
+## 5️⃣ Appointment Rescheduling
+
+### What this feature is
+
+Changing time/date.
+
+### Functionality
+
+* Change date
+* Change time slot
+* Revalidate availability
+* Track reschedule count
+
+### Rules
+
+* Cannot reschedule completed appointment
+* Old slot must be released
+* New slot must be locked
+
+---
+
+## 6️⃣ Appointment Cancellation
+
+### What this feature is
+
+Invalidating an appointment.
+
+### Functionality
+
+* Cancel appointment
+* Capture cancellation reason
+* Free time slot
+* Update status history
+
+### Domain decisions
+
+* Soft cancel only
+* Preserve audit trail
+
+---
+
+## 7️⃣ Appointment–Doctor Availability Sync
+
+### What this feature is
+
+Keeping availability accurate.
+
+### Functionality
+
+* Lock slot on creation
+* Unlock slot on cancel
+* Block slots on leave
+* Auto-handle overlapping leaves
+
+This keeps **double booking impossible**.
+
+---
+
+## 8️⃣ Appointment–Medical Record Link
+
+### What this feature is
+
+Connecting consultation to clinical data.
+
+### Functionality
+
+* One appointment → zero or one medical record
+* Medical record must reference appointment
+* Prevent orphan records
+
+🧠 This enforces **data integrity**.
+
+---
+
+## 9️⃣ Appointment History & Audit
+
+### What this feature is
+
+Traceability.
+
+### Functionality
+
+* Track who created appointment
+* Track who modified
+* Store old vs new values
+* Status transition logs
+
+⚠️ This is **critical** for hospitals.
+
+---
+
+## 🔔 Appointment Notifications (Conceptual)
+
+### What this feature is
+
+Events emitted by appointment changes.
+
+### Events
+
+* Appointment created
+* Rescheduled
+* Cancelled
+* Doctor assigned
+* Status changed
+
+🧠 Domain emits events — notification system consumes them later.
+
+---
+
+## ❌ EXPLICITLY NOT APPOINTMENT DOMAIN
+
+Avoid mixing concerns.
+
+* Payments
+* Prescriptions
+* Medical data entry
+* User roles
+* Authentication
+
+---
+
+## 🧠 Why this domain is well-shaped
+
+✔ Centralized
+✔ Role-independent
+✔ Extensible
+✔ Safe from logic duplication
+
+This domain can now be used by:
+
+* Patient booking
+* Staff booking
+* Admin override
+* Doctor viewing
+
+**Without changing core logic.**
+
+---
+
+## 🔑 Next logical steps
+
+Pick one 👇
+1️⃣ Map **which roles can trigger which appointment actions**
+2️⃣ Design **DB schema for appointments & slots**
+3️⃣ Define **REST APIs for appointment domain**
+4️⃣ Move to **Medical Records domain**
+
+Tell me what you want next and we’ll continue cleanly 🚀

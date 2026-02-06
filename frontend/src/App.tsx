@@ -20,6 +20,7 @@ import Verifyemail from './components/authentication/verifyemail';
 import EmailVerification from './components/authentication/EmailVerification';
 import Manage_disease from './components/manage_disease';
 import Create_doctor from './components/doctor/create'
+import Dashboard from './components/dashboard/dashboard';
 function App() {
   return (
     <div className="App">
@@ -29,24 +30,24 @@ function App() {
             <Route path='register' element={<Register />}></Route>
             <Route path='login' element={<Login />}></Route>
             <Route path="emailverify" element={<Verifyemail />} />
-            <Route path='verifyemail'element={<EmailVerification/>}></Route>
+            <Route path='verifyemail' element={<EmailVerification />}></Route>
 
           </Route>
           <Route element={<Protected_routes />}>
-            
+
             <Route path='/home' element={<Home />}>
               <Route path='create' element={<Create />}></Route>
               <Route path='details/:id' element={<Details />}></Route>
-              <Route path='manage_disease'element={<Manage_disease/>}></Route>
+              <Route path='manage_disease' element={<Manage_disease />}></Route>
               <Route path='profile' element={<Profile />}>
                 <Route path='changepassword' element={<Changepassword />}></Route>
               </Route>
             </Route>
 
-            <Route path='/create_doctor'element={<Create_doctor/>}></Route>
+            <Route path='/create_doctor' element={<Create_doctor />}></Route>
           </Route>
-       
 
+          <Route path='/dashboard' element={<Dashboard />}></Route>
         </Routes>
         <ToastContainer position="top-right" autoClose={3000} />
       </>

@@ -1,0 +1,244 @@
+Nice, we’re moving in a **very clean direction** now 👍
+Same rule again: **feature-first, role-agnostic**.
+
+Think:
+
+> “Everything the system can do **around a patient** as a domain entity.”
+
+---
+
+# 🧑‍⚕️ PATIENT DOMAIN — COMPLETE FUNCTIONALITY
+
+---
+
+## 1️⃣ Patient Profile (Core Entity)
+
+### What this feature is
+
+Patient as a **first-class domain object**, not just a user.
+
+### Functionality
+
+* Create patient profile
+* Update patient details
+* View patient profile
+* Activate / deactivate patient
+* Merge duplicate patient records (advanced)
+
+### Core data
+
+* Name
+* DOB / age
+* Gender
+* Contact info
+* Address
+* Emergency contact
+* Blood group
+* Status (active/inactive)
+
+🧠
+Auth user ≠ Patient profile
+(One user → one patient, but still separate concerns)
+
+---
+
+## 2️⃣ Patient Medical History (Read Model)
+
+### What this feature is
+
+Aggregated **clinical timeline** of a patient.
+
+### Functionality
+
+* View visit history
+* View diagnoses
+* View prescriptions
+* View reports
+* View doctor notes (read-only)
+
+### Characteristics
+
+* Chronological
+* Immutable (no edits here)
+* Built from:
+
+  * Appointments
+  * Medical records
+  * Prescriptions
+
+🚫 No creation or editing in this feature
+(It’s a **projection**, not a source of truth)
+
+---
+
+## 3️⃣ Patient Appointments (Interaction Layer)
+
+### What this feature is
+
+Patient’s interaction with the appointment domain.
+
+### Functionality
+
+* View appointments
+* View appointment details
+* Track appointment status
+* See doctor & slot info
+* View upcoming vs past appointments
+
+🧠
+Actual creation/reschedule logic lives in **Appointment domain**.
+
+---
+
+## 4️⃣ Patient Self-Service Actions
+
+### What this feature is
+
+Things a patient can request or initiate.
+
+### Functionality
+
+* Request appointment
+* Request reschedule
+* Request cancellation
+* Add reason / symptoms
+* Confirm appointment (if required)
+
+⚠️
+These are **requests**, not guaranteed actions.
+
+---
+
+## 5️⃣ Patient Reports & Documents
+
+### What this feature is
+
+Patient-provided medical data.
+
+### Functionality
+
+* Upload reports
+* View uploaded reports
+* Replace report (versioned)
+* Tag report type (lab, scan, etc.)
+
+### Rules
+
+* Reports belong to patient
+* Linked optionally to appointment
+* Cannot edit clinical reports created by doctor
+
+---
+
+## 6️⃣ Patient–Doctor Interaction (Indirect)
+
+### What this feature is
+
+Relationship derived from visits.
+
+### Functionality
+
+* View consulted doctors
+* View doctor profile
+* View follow-up instructions
+* See recommended follow-ups
+
+🧠
+No direct “assign doctor” logic here.
+
+---
+
+## 7️⃣ Patient Dashboard (Derived Feature)
+
+### What this feature is
+
+A **summary view**, not business logic.
+
+### Functionality
+
+* Upcoming appointment
+* Last prescription
+* Pending reports
+* Recent doctor notes
+
+---
+
+## 8️⃣ Notifications (Patient as Receiver)
+
+### What this feature is
+
+Patient-facing alerts.
+
+### Events
+
+* Appointment confirmation
+* Reschedule / cancellation
+* Prescription added
+* Report reviewed
+* Follow-up reminder
+
+(Event generation handled elsewhere)
+
+---
+
+## 9️⃣ Patient Preferences & Settings
+
+### What this feature is
+
+Non-clinical configuration.
+
+### Functionality
+
+* Notification preferences
+* Language
+* Contact method
+* Consent flags
+
+---
+
+## ❌ EXPLICITLY NOT PATIENT DOMAIN
+
+Very important to keep scope clean.
+
+* Prescribing medicines
+* Editing medical records
+* Creating doctors
+* Managing availability
+* Billing logic (separate domain)
+
+---
+
+## 🧠 Key Design Insights (mentor-aligned)
+
+* Patient domain is **mostly read-heavy**
+* Write operations are **requests**, not authority
+* Clinical data is **owned by doctor domain**
+* Appointments are **shared but not owned**
+
+---
+
+## ✅ What we have so far
+
+We’ve cleanly defined:
+
+* ✔ Doctor domain
+* ✔ Appointment domain
+* ✔ Patient domain
+
+Each:
+
+* Independent
+* Role-agnostic
+* Reusable
+
+---
+
+## 🔜 Next logical domains (pick one)
+
+1️⃣ **Medical Records domain** (very important)
+2️⃣ **Staff domain**
+3️⃣ **Admin / System domain**
+4️⃣ **Permissions mapping across domains**
+5️⃣ **DB schema per domain**
+
+Tell me what’s next and we continue the same clean way 👌

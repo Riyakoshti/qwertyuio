@@ -1,0 +1,228 @@
+Perfect 👍
+Now we’ll do **Staff Domain** the *same disciplined way* — **feature-first, role-agnostic, no shortcuts**.
+
+Think:
+
+> “Everything the system can do **around staff as an operational domain**.”
+
+Staff ≠ Doctor ≠ Admin
+Staff = **operations & coordination**, not clinical authority.
+
+---
+
+# 🧑‍💼 STAFF DOMAIN — COMPLETE FUNCTIONALITY
+
+---
+
+## 1️⃣ Staff Profile (Core Entity)
+
+### What this feature is
+
+Staff as a **system actor**, not just a login user.
+
+### Functionality
+
+* Create staff profile
+* Update staff details
+* View staff profile
+* Activate / deactivate staff
+* Assign staff type (reception, nurse, operator)
+
+### Core data
+
+* Name
+* Role type (reception / nurse / assistant)
+* Contact info
+* Shift timing
+* Status (active/inactive)
+
+🧠
+Auth user ≠ Staff profile
+(But usually one-to-one)
+
+---
+
+## 2️⃣ Patient Management (Operational)
+
+### What this feature is
+
+Front-desk level patient handling.
+
+### Functionality
+
+* Create patient profile
+* Update basic patient info
+* Search patients
+* View patient summary
+* Mark patient arrived / waiting
+
+### Rules
+
+* No access to medical history details
+* No editing of medical records
+
+---
+
+## 3️⃣ Appointment Operations
+
+### What this feature is
+
+Operational control of appointments.
+
+### Functionality
+
+* Create appointment on behalf of patient
+* Reschedule appointment
+* Cancel appointment
+* Assign doctor to appointment
+* View daily appointment queue
+
+### Notes
+
+* Uses **Appointment domain**
+* Staff is an operator, not owner
+
+---
+
+## 4️⃣ Queue & Visit Flow Management
+
+### What this feature is
+
+Handling patient flow inside clinic.
+
+### Functionality
+
+* Mark patient:
+
+  * Arrived
+  * Waiting
+  * In consultation
+  * Completed
+* View live queue per doctor
+* Prioritize emergencies (flag only)
+
+🧠
+Status flags only — no clinical data touched.
+
+---
+
+## 5️⃣ Doctor Schedule Visibility
+
+### What this feature is
+
+Read-only operational visibility.
+
+### Functionality
+
+* View doctor availability
+* View leave schedule
+* View blocked slots
+
+🚫 Staff does not modify availability.
+
+---
+
+## 6️⃣ Staff Dashboard (Derived Feature)
+
+### What this feature is
+
+Operational overview.
+
+### Functionality
+
+* Today’s appointments
+* Pending check-ins
+* Delayed consultations
+* Doctor availability snapshot
+
+---
+
+## 7️⃣ Reports & Documents (Non-Clinical)
+
+### What this feature is
+
+Administrative file handling.
+
+### Functionality
+
+* Upload administrative documents
+* View patient-uploaded reports (read-only)
+* Print appointment slips / tokens
+
+🚫 No clinical annotation.
+
+---
+
+## 8️⃣ Notifications (Staff as Receiver)
+
+### What this feature is
+
+Operational alerts.
+
+### Events
+
+* Doctor on leave
+* Appointment cancelled
+* Emergency flag raised
+* High waiting time
+
+---
+
+## 9️⃣ Staff Audit & Accountability
+
+### What this feature is
+
+Traceability of actions.
+
+### Functionality
+
+* Log appointment actions
+* Track who created/rescheduled
+* Shift-based activity logs
+
+This is important for admin review.
+
+---
+
+## ❌ EXPLICITLY NOT STAFF DOMAIN
+
+To keep system safe:
+
+* Editing medical records
+* Writing prescriptions
+* Approving doctor leave
+* System configuration
+* Role management
+
+---
+
+## 🧠 Key Design Insight
+
+Staff domain:
+
+* Is **write-heavy** for appointments
+* Is **read-only** for clinical data
+* Acts as a **bridge** between patients and doctors
+* Must be **highly restricted**
+
+---
+
+## ✅ Domains covered so far
+
+✔ Doctor
+✔ Appointment
+✔ Patient
+✔ Staff
+
+Only **Admin / System domain** remains.
+
+---
+
+## 🔜 Next logical step (your choice)
+
+1️⃣ **Admin / System domain**
+2️⃣ **Permission mapping across all domains**
+3️⃣ **Database schema (ERD)**
+4️⃣ **API endpoints per domain**
+
+Tell me what you want next and we keep this clean and scalable 👌

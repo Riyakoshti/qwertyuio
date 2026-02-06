@@ -1,0 +1,262 @@
+Perfect 👍 this is **exactly** how you should do it now.
+We’ll forget roles for a moment and **focus only on “Doctor-related functionality” as a domain**.
+
+Think of this as:
+
+> “Everything the system can do **around a doctor** — regardless of who triggers it.”
+
+Later, we’ll say *who can trigger what*.
+
+---
+
+# 🩺 DOCTOR DOMAIN — ALL FUNCTIONALITY (FEATURE-FIRST)
+
+I’ll group this cleanly so implementation stays sane.
+
+---
+
+## 1️⃣ Doctor Profile Management (Core)
+
+### What this feature is
+
+Everything related to **doctor as a system entity**.
+
+### Functionality
+
+* Create doctor profile
+* Update doctor details
+* View doctor details
+* Activate / deactivate doctor
+* Assign department / specialization
+
+### Data involved
+
+* Name
+* Email
+* Phone
+* Specialization
+* Qualification
+* Experience
+* Status (active/inactive)
+
+⚠️ **Important**
+
+* This is **NOT authentication**
+* This is domain data
+
+---
+
+## 2️⃣ Doctor Availability & Schedule
+
+### What this feature is
+
+When and how a doctor is available for appointments.
+
+### Functionality
+
+* Set working days
+* Set time slots
+* Define appointment duration
+* Block dates (leave)
+* Emergency availability override
+
+### System responsibilities
+
+* Generate slots
+* Prevent double booking
+* Respect leave & holidays
+
+🧠 Design note
+Availability should be **independent of appointments**.
+
+---
+
+## 3️⃣ Doctor Leave Management
+
+### What this feature is
+
+Handling planned/unplanned absence.
+
+### Functionality
+
+* Request leave
+* Modify leave
+* Cancel leave
+* View leave history
+
+### Effects
+
+* Auto-cancel or reschedule appointments
+* Block slots
+* Notify affected users (later)
+
+---
+
+## 4️⃣ Doctor Appointment View (Read-only / Status)
+
+### What this feature is
+
+Doctor’s interaction with appointments.
+
+### Functionality
+
+* View assigned appointments
+* Filter by date / status
+* View patient summary
+* Mark appointment status:
+
+  * Completed
+  * No-show
+  * Cancelled
+
+🚫 Doctor does **not** create appointments
+🚫 Doctor does **not** reschedule appointments
+
+---
+
+## 5️⃣ Patient Medical Records (Doctor-Centric)
+
+### What this feature is
+
+Clinical data entry and updates.
+
+### Functionality
+
+* Create medical record
+* Update medical record
+* Add diagnosis
+* Add symptoms
+* Add treatment plan
+* Add doctor notes
+
+### Characteristics
+
+* Immutable history (versioning)
+* Linked to appointment
+* Linked to doctor
+
+🚫 No delete (soft/versioned only)
+
+---
+
+## 6️⃣ Prescriptions
+
+### What this feature is
+
+Structured medical instructions.
+
+### Functionality
+
+* Create prescription
+* Update prescription (before completion)
+* Add medicines
+* Dosage & duration
+* Follow-up advice
+
+### Output
+
+* Viewable record
+* Downloadable PDF (later)
+
+---
+
+## 7️⃣ Reports & Attachments (Doctor Side)
+
+### What this feature is
+
+Clinical documents handling.
+
+### Functionality
+
+* View uploaded reports
+* Upload reports
+* Annotate reports
+* Link report to visit
+
+🚫 Doctor cannot delete patient-uploaded reports blindly
+
+---
+
+## 8️⃣ Doctor Dashboard (Derived Feature)
+
+### What this feature is
+
+Aggregated insights for the doctor.
+
+### Functionality
+
+* Today’s appointments
+* Upcoming appointments
+* Pending follow-ups
+* Recent patients
+
+🧠 This is **read-only aggregation**, not business logic.
+
+---
+
+## 9️⃣ Doctor–Patient Relationship (Implicit Feature)
+
+### What this feature is
+
+Association between doctor and patients.
+
+### Functionality
+
+* View assigned patients
+* View patient history
+* Track follow-up patients
+
+⚠️ Relationship is **created via appointment**, not manually.
+
+---
+
+## 10️⃣ Notifications (Doctor as Receiver)
+
+### What this feature is
+
+Doctor-facing alerts.
+
+### Functionality
+
+* New appointment assigned
+* Appointment cancelled
+* Leave approved/rejected
+* Report uploaded by patient
+
+(Implementation later; feature exists conceptually)
+
+---
+
+# ❌ EXPLICITLY NOT DOCTOR FEATURES
+
+This is important to avoid scope creep.
+
+* User creation
+* Billing
+* Payments
+* Role management
+* System configuration
+* Staff assignment
+
+---
+
+## 🧠 What we just did (important insight)
+
+We:
+
+* Did **NOT** say “doctor can/cannot”
+* Did **NOT** check roles
+* Defined **pure doctor-domain capabilities**
+
+This is exactly what your mentor meant by **feature-first**.
+
+---
+
+## ✅ Next logical steps (choose one)
+
+1️⃣ Convert this into **service classes**
+2️⃣ Design **DB tables for doctor domain**
+3️⃣ Map **which roles can trigger which doctor features**
+4️⃣ Define **API endpoints (REST)**
+
+Tell me what you want next and we’ll go one level deeper 👌
