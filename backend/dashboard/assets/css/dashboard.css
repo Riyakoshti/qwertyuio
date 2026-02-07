@@ -653,38 +653,3 @@ body {
 	color: var(--dark-grey);
 	font-size: 15px;
 }
-
-/* ===============================
-   FIXES AFTER JSX UPDATE
-   =============================== */
-
-/* Restore navbar layout */
-#content nav {
-	display: flex;
-	align-items: center;
-}
-
-/* Ensure search form aligns properly */
-#content nav form {
-	display: flex;
-	align-items: center;
-	margin-right: auto;
-}
-
-/* Prevent button default styling issues */
-#content nav form .form-input button {
-	border: none;
-	outline: none;
-}
-
-/* Fix profile avatar alignment */
-#content nav .profile {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-}
-
-/* Prevent anchor default shift */
-#content nav .profile img {
-	display: block;
-}

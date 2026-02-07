@@ -242,3 +242,271 @@ Each:
 5️⃣ **DB schema per domain**
 
 Tell me what’s next and we continue the same clean way 👌
+
+
+
+
+Great question 👌
+This is exactly how you should think **after backend + APIs** — *“what does the user actually experience?”*
+
+Let’s assume **you are a Patient and you just logged in**.
+
+I’ll explain:
+1️⃣ What your **Patient Dashboard** should look like
+2️⃣ What **features you can see & use**
+3️⃣ What you **must NOT see** (very important)
+
+No tech jargon, pure product + UX thinking.
+
+---
+
+# 👤 PATIENT DASHBOARD — WHAT YOU SEE
+
+### 🟦 Top Section (Quick Overview)
+
+At the top, the patient should immediately see **what matters now**:
+
+* 👋 **Welcome, Riya**
+* 📅 **Next Appointment**
+
+  * Doctor name
+  * Date & time
+  * Status (Confirmed / Requested)
+* ⏰ Countdown or “Upcoming today / tomorrow”
+
+👉 This answers: *“Do I need to do something today?”*
+
+---
+
+# 🧭 MAIN DASHBOARD SECTIONS
+
+## 1️⃣ My Appointments (MOST IMPORTANT)
+
+### What you see
+
+* List of **your appointments only**
+* Columns:
+
+  * Date
+  * Time
+  * Doctor
+  * Status
+  * Actions
+
+### What actions you can do
+
+✅ Book new appointment
+✅ View appointment details
+✅ Cancel appointment (before visit)
+✅ Request reschedule
+
+🚫 You cannot:
+
+* Change appointment status to COMPLETED
+* Assign doctor manually
+* Edit appointment after completion
+
+---
+
+## 2️⃣ Book Appointment
+
+### What happens
+
+* Button: **“Book Appointment”**
+* Flow:
+
+  * Choose doctor
+  * Choose date
+  * Choose available time slot
+  * Add reason/symptoms
+  * Submit
+
+### Result
+
+* Appointment created with status: **REQUESTED**
+* You see it immediately in “My Appointments”
+
+👉 Very important psychologically: **instant feedback**
+
+---
+
+## 3️⃣ Medical History
+
+### What you see (READ-ONLY)
+
+A timeline style view:
+
+* Past visits
+* Date-wise grouping
+* For each visit:
+
+  * Doctor name
+  * Diagnosis summary
+  * Prescription (download/view)
+  * Attached reports
+
+✅ You can:
+
+* View
+* Download
+
+🚫 You cannot:
+
+* Edit diagnosis
+* Edit prescription
+* Delete records
+
+This builds **trust & legal safety**.
+
+---
+
+## 4️⃣ Prescriptions
+
+### What you see
+
+* List of prescriptions
+* For each:
+
+  * Doctor
+  * Date
+  * Medicines
+  * Dosage
+  * Follow-up date
+
+### Actions
+
+✅ Download PDF
+✅ View details
+
+🚫 No editing
+
+---
+
+## 5️⃣ Reports & Documents
+
+### What you can do
+
+✅ Upload your own reports
+
+* Blood tests
+* X-rays
+* MRI
+
+✅ View doctor-uploaded reports
+
+🚫 Cannot modify doctor reports
+🚫 Cannot delete clinical records
+
+---
+
+## 6️⃣ Doctors Directory
+
+### What you see
+
+* List of doctors
+* Specialization
+* Availability (read-only)
+* Experience
+
+### What you can do
+
+✅ View profile
+✅ Book appointment
+
+🚫 Cannot message doctor directly (unless chat feature exists)
+
+---
+
+## 7️⃣ Notifications
+
+### Examples
+
+* Appointment confirmed
+* Appointment rescheduled
+* Prescription added
+* Follow-up reminder
+
+👉 This makes the app feel **alive**.
+
+---
+
+## 8️⃣ Profile & Settings
+
+### What you can manage
+
+✅ Personal details
+✅ Emergency contact
+✅ Notification preferences
+✅ Change password
+
+🚫 Cannot change role
+🚫 Cannot deactivate account directly
+
+---
+
+# ❌ WHAT A PATIENT SHOULD NEVER SEE
+
+This is critical.
+
+🚫 Doctor dashboards
+🚫 Staff queues
+🚫 Admin panels
+🚫 Other patients’ data
+🚫 Appointment status controls
+🚫 Medical record edit forms
+
+If patient sees any of this → **security bug**.
+
+---
+
+# 🧠 MENTAL MODEL (VERY IMPORTANT)
+
+As a patient, the system should feel like:
+
+> “I can **request**, **view**, and **track**
+> but I cannot **decide medical outcomes**.”
+
+This matches:
+
+* Real hospitals
+* Legal compliance
+* Clean RBAC
+
+---
+
+# 🧩 SIMPLE FEATURE SUMMARY (PATIENT)
+
+| Feature                   | Allowed     |
+| ------------------------- | ----------- |
+| Login                     | ✅           |
+| Register                  | ✅           |
+| Book appointment          | ✅           |
+| Reschedule                | ✅ (request) |
+| Cancel                    | ✅           |
+| View medical history      | ✅           |
+| Edit medical records      | ❌           |
+| Prescribe medicine        | ❌           |
+| Change appointment status | ❌           |
+
+---
+
+## 🏁 FINAL THOUGHT
+
+If a patient logs in and:
+
+* Immediately understands **what’s next**
+* Can book easily
+* Can see history clearly
+
+👉 you’ve built a **good product**, not just a system.
+
+---
+
+If you want next, I can:
+
+* Design **Doctor dashboard UX**
+* Design **Staff dashboard**
+* Map **frontend routes per role**
+* Convert this into **actual React pages structure**
+
+Just tell me what you want next 👌

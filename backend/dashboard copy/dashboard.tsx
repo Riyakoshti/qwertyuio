@@ -1,10 +1,8 @@
 import "boxicons/css/boxicons.min.css";
 import React, { useEffect, useState } from "react";
 import "./assets/css/dashboard.css";
+
 import profileImg from "./assets/images/profile.png";
-import Home from "../home";
-import Homepage from "../homepage";
-import Book from "../appointments/book";
 
 const Dashboard: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -22,6 +20,7 @@ const Dashboard: React.FC = () => {
         const timer = setInterval(() => {
             setCurrentTime(new Date());
         }, 1000);
+
         return () => clearInterval(timer);
     }, []);
 
@@ -45,18 +44,27 @@ const Dashboard: React.FC = () => {
     /* Dynamic content */
     const renderContent = () => {
         switch (content) {
-            case "appointments":
-                return <h2>Manage Appointments</h2>;
-            case "patients":
-                return <h2>Manage Patients</h2>;
-            case "queue":
-                return <h2>Manage Queue</h2>;
-            case "doctors":
-                return <h2>Doctors Details</h2>;
             case "profile":
-                return <h2>My Profile</h2>;
+                return (
+                    <>
+                        <h2>My Profile</h2>
+                        <p>This is profile content</p>
+                    </>
+                );
+            case "courier":
+                return (
+                    <>
+                        <h2>Courier Details</h2>
+                        <p>Courier details loaded here</p>
+                    </>
+                );
             default:
-                return <h2>Welcome to Staff Dashboard</h2>;
+                return (
+                    <>
+                        <h2>Welcome to Dashboard</h2>
+                        <p>Select an option from the sidebar</p>
+                    </>
+                );
         }
     };
 
@@ -75,63 +83,41 @@ const Dashboard: React.FC = () => {
 
                 <ul className="side-menu top">
                     <li className={activeMenu === "dashboard" ? "active" : ""}>
-                        <a onClick={() => {
-                            setActiveMenu("dashboard");
-                            setContent("dashboard");
-                        }}>
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setActiveMenu("dashboard");
+                                setContent("dashboard");
+                            }}
+                        >
                             <i className="bx bxs-dashboard"></i>
                             <span className="text">Dashboard</span>
                         </a>
                     </li>
 
-                    <li className={activeMenu === "appointments" ? "active" : ""}>
-                        <a onClick={() => {
-                            setActiveMenu("appointments");
-                            setContent("appointments");
-                            <Book/>
-                        }}>
-                            <i className="bx bx-calendar"></i>
-                            <span className="text">Appointments</span>
-                        </a>
-                    </li>
-
-                    <li className={activeMenu === "patients" ? "active" : ""}>
-                        <a onClick={() => {
-                            setActiveMenu("patients");
-                            setContent("patients");
-                        }}>
-                            <i className="bx bx-user"></i>
-                            <span className="text">Patients</span>
-                        </a>
-                    </li>
-
-                    <li className={activeMenu === "queue" ? "active" : ""}>
-                        <a onClick={() => {
-                            setActiveMenu("queue");
-                            setContent("queue");
-                        }}>
-                            <i className="bx bx-list-ul"></i>
-                            <span className="text">Queue</span>
-                        </a>
-                    </li>
-
-                    <li className={activeMenu === "doctors" ? "active" : ""}>
-                        <a onClick={() => {
-                            setActiveMenu("doctors");
-                            setContent("doctors");
-                        }}>
-                            <i className="bx bx-plus-medical"></i>
-                            <span className="text">Doctors</span>
-                        </a>
-                    </li>
-
                     <li className={activeMenu === "profile" ? "active" : ""}>
-                        <a onClick={() => {
-                            setActiveMenu("profile");
-                            setContent("profile");
-                        }}>
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setActiveMenu("profile");
+                                setContent("profile");
+                            }}
+                        >
                             <i className="bx bxs-user"></i>
                             <span className="text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li className={activeMenu === "courier" ? "active" : ""}>
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setActiveMenu("courier");
+                                setContent("courier");
+                            }}
+                        >
+                            <i className="bx bxs-doughnut-chart"></i>
+                            <span className="text">Courier Details</span>
                         </a>
                     </li>
                 </ul>
@@ -148,14 +134,14 @@ const Dashboard: React.FC = () => {
 
             {/* CONTENT */}
             <section id="content">
+                {/* NAVBAR */}
                 <nav>
                     <i className="bx bx-menu" onClick={toggleSidebar}></i>
 
-                    {/* SEARCH (RESTORED STRUCTURE) */}
                     <form>
                         <div className="form-input">
                             <input type="search" placeholder="Search..." />
-                            <button type="button">
+                            <button type="button" className="search-btn">
                                 <i className="bx bx-search"></i>
                             </button>
                         </div>
@@ -175,26 +161,30 @@ const Dashboard: React.FC = () => {
                     </a>
                 </nav>
 
+                {/* MAIN */}
                 <main>
                     <div className="dashboard-container">
-                        <h1 className="page-title">Staff Dashboard</h1>
+                        <h1 className="page-title">Dashboard</h1>
 
                         <div className="stats-grid">
                             <div className="stat-card">
-                                <h3>Today’s Appointments</h3>
-                                <p>24</p>
+                                <h3>Total Orders</h3>
+                                <p>120</p>
                             </div>
+
                             <div className="stat-card">
-                                <h3>Waiting Patients</h3>
-                                <p>6</p>
+                                <h3>Active Couriers</h3>
+                                <p>15</p>
                             </div>
+
                             <div className="stat-card">
-                                <h3>Doctors On Duty</h3>
-                                <p>5</p>
+                                <h3>Delivered Today</h3>
+                                <p>32</p>
                             </div>
+
                             <div className="stat-card">
-                                <h3>Completed</h3>
-                                <p>12</p>
+                                <h3>Pending</h3>
+                                <p>8</p>
                             </div>
                         </div>
 
